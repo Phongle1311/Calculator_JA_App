@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="#e9ebee">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:background="#1c1234"
+        android:paddingTop = "20dp"
+        android:paddingBottom="25dp"
+        android:paddingLeft = "10dp"
+        android:paddingRight = "25dp"
+        android:layout_weight = "57"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_expression"
+            android:text = ""
+            android:textSize="30sp"
+            android:textColor="#ccc"
+            android:gravity="right"
+            >
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_answer"
+            android:text = ""
+            android:textSize="70sp"
+            android:textColor="#fff"
+            android:gravity="right"
+            >
+        </TextView>
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="147">
+        <TableRow
+            android:layout_height = "0dp"
+            android:layout_weight="1"
+            >
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_height = "match_parent"
+                android:text = "C"
+                android:textColor = "#1c1234"
+                android:layout_weight = ".25"
+                android:background = "#fff"
+                android:textSize="30sp"
+                android:layout_marginRight = "1dp"
+                android:onClick = "ButtonClick">
+            </androidx.appcompat.widget.AppCompatButton>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_height = "match_parent"
+                android:text = "±"
+                android:layout_weight = ".25"
+                android:background = "#fff"
+                android:textColor = "#1c1234"
+                android:textSize="30sp"
+                android:layout_marginRight = "1dp"
+                android:onClick = "ButtonClick">
+            </androidx.appcompat.widget.AppCompatButton>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_height = "match_parent"
+                android:text = "%"
+                android:textColor = "#1c1234"
+                android:layout_weight = ".25"
+                android:background = "#fff"
+                android:textSize="30sp"
+                android:onClick = "ButtonClick">
+            </androidx.appcompat.widget.AppCompatButton>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_height = "match_parent"
+                android:text = "÷"
+                android:layout_weight = ".25"
+                android:background = "#e98900"
+                android:textColor = "#fff"
+                android:textSize="30sp"
+                android:layout_marginLeft = "2dp"
+                android:onClick = "ButtonClick">
+            </androidx.appcompat.widget.AppCompatButton>
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop = "1dp"
+            android:layout_height = "0dp"
+            android:layout_weight="1"
+            >
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_height = "match_parent"
+                android:text = "7"
+                android:textColor = "#1c1234"
+                android:layout_weight = ".25"
+                android:background = "#fff"
+                android:textSize="30sp"
+                android:layout_marginRight = "1dp"
+                android:onClick = "ButtonClick">
+            </androidx.appcompat.widget.AppCompatButton>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_height = "match_parent"
+                android:text = "8"
+                android:layout_weight = ".25"
+                android:background = "#fff"
+                android:textColor = "#1c1234"
+                android:textSize="30sp"
+                android:layout_marginRight = "1dp"
+                android:onClick = "ButtonClick">
+            </androidx.appcompat.widget.AppCompatButton>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_height = "match_parent"
+                android:text = "9"
+                android:textColor = "#1c1234"
+                android:layout_weight = ".25"
+                android:background = "#fff"
+                android:textSize="30sp"
+                android:onClick = "ButtonClick">
+            </androidx.appcompat.widget.AppCompatButton>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_height = "match_parent"
+                android:text = "×"
+                android:layout_weight = ".25"
+                android:background = "#e98900"
+                android:textColor = "#fff"
+                android:textSize="30sp"
+                android:layout_marginLeft = "2dp"
+                android:onClick = "ButtonClick">
+            </androidx.appcompat.widget.AppCompatButton>
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop = "1dp"
+            android:layout_height = "0dp"
+            android:layout_weight="1"
+            >
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_height = "match_parent"
+                android:text = "4"
+                android:textColor = "#1c1234"
+                android:layout_weight = ".25"
+                android:background = "#fff"
+                android:textSize="30sp"
+                android:layout_marginRight = "1dp"
+                android:onClick = "ButtonClick">
+            </androidx.appcompat.widget.AppCompatButton>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_height = "match_parent"
+                android:text = "5"
+                android:layout_weight = ".25"
+                android:background = "#fff"
+                android:textColor = "#1c1234"
+                android:textSize="30sp"
+                android:layout_marginRight = "1dp"
+                android:onClick = "ButtonClick">
+            </androidx.appcompat.widget.AppCompatButton>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_height = "match_parent"
+                android:text = "6"
+                android:textColor = "#1c1234"
+                android:layout_weight = ".25"
+                android:background = "#fff"
+                android:textSize="30sp"
+                android:onClick = "ButtonClick">
+            </androidx.appcompat.widget.AppCompatButton>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_height = "match_parent"
+                android:text = "-"
+                android:layout_weight = ".25"
+                android:background = "#e98900"
+                android:textColor = "#fff"
+                android:textSize="30sp"
+                android:layout_marginLeft = "2dp"
+                android:onClick = "ButtonClick">
+            </androidx.appcompat.widget.AppCompatButton>
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop = "1dp"
+            android:layout_height = "0dp"
+            android:layout_weight="1"
+            >
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_height = "match_parent"
+                android:text = "1"
+                android:textColor = "#1c1234"
+                android:layout_weight = ".25"
+                android:background = "#fff"
+                android:textSize="30sp"
+                android:layout_marginRight = "1dp"
+                android:onClick = "ButtonClick">
+            </androidx.appcompat.widget.AppCompatButton>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_height = "match_parent"
+                android:text = "2"
+                android:layout_weight = ".25"
+                android:background = "#fff"
+                android:textColor = "#1c1234"
+                android:textSize="30sp"
+                android:layout_marginRight = "1dp"
+                android:onClick = "ButtonClick">
+            </androidx.appcompat.widget.AppCompatButton>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_height = "match_parent"
+                android:text = "3"
+                android:textColor = "#1c1234"
+                android:layout_weight = ".25"
+                android:background = "#fff"
+                android:textSize="30sp"
+                android:onClick = "ButtonClick">
+            </androidx.appcompat.widget.AppCompatButton>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_height = "match_parent"
+                android:text = "+"
+                android:layout_weight = ".25"
+                android:background = "#e98900"
+                android:textColor = "#fff"
+                android:textSize="30sp"
+                android:layout_marginLeft = "2dp"
+                android:onClick = "ButtonClick">
+            </androidx.appcompat.widget.AppCompatButton>
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop = "1dp"
+            android:layout_height = "0dp"
+            android:layout_weight="1">
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_height = "match_parent"
+                android:text = "0"
+                android:layout_width = "0dp"
+                android:layout_weight = ".5"
+                android:textColor = "#1c1234"
+                android:background = "#fff"
+                android:textSize="30sp"
+                android:layout_marginRight = "1dp"
+                android:onClick = "ButtonClick">
+            </androidx.appcompat.widget.AppCompatButton>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_height = "match_parent"
+                android:text = "."
+                android:layout_weight = ".25"
+                android:layout_width = "0dp"
+                android:textColor = "#1c1234"
+                android:background = "#fff"
+                android:textSize="30sp"
+                android:onClick = "ButtonClick">
+            </androidx.appcompat.widget.AppCompatButton>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_height = "match_parent"
+                android:text = "="
+                android:layout_width = "0dp"
+                android:layout_weight = ".25"
+                android:background = "#e98900"
+                android:textColor = "#fff"
+                android:textSize="30sp"
+                android:layout_marginLeft = "2dp"
+                android:onClick = "ButtonClick">
+            </androidx.appcompat.widget.AppCompatButton>
+        </TableRow>
+    </TableLayout>
+</LinearLayout>
