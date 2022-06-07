@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private String input, output, formula, answer;
     private char lastChar;
     private boolean newExp = true;
+    private ScriptEngine engine = new ScriptEngineManager().getEngineByName("rhino");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,8 +135,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void solve() {
-        ScriptEngine engine = new ScriptEngineManager().getEngineByName("rhino");
-
         try {
             double res = (double) engine.eval(formula);
             answer = res + "";
