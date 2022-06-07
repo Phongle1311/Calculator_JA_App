@@ -114,15 +114,16 @@
                 android:layout_marginRight = "1dp"
                 android:onClick = "ButtonClick">
             </androidx.appcompat.widget.AppCompatButton>
+
             <androidx.appcompat.widget.AppCompatButton
-                android:layout_height = "match_parent"
-                android:text = "9"
-                android:textColor = "#1c1234"
-                android:layout_weight = ".25"
-                android:background = "#fff"
-                android:textSize="30sp"
-                android:onClick = "ButtonClick">
-            </androidx.appcompat.widget.AppCompatButton>
+                android:layout_height="match_parent"
+                android:layout_weight=".25"
+                android:background="#fff"
+                android:onClick="ButtonClick"
+                android:text="9"
+                android:textColor="#1c1234"
+                android:textSize="30sp"></androidx.appcompat.widget.AppCompatButton>
+
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_height = "match_parent"
                 android:text = "×"
@@ -239,7 +240,7 @@
                 android:textColor = "#1c1234"
                 android:background = "#fff"
                 android:textSize="30sp"
-                android:layout_marginRight = "1dp"
+                android:layout_marginRight = "2dp"
                 android:onClick = "ButtonClick">
             </androidx.appcompat.widget.AppCompatButton>
             <androidx.appcompat.widget.AppCompatButton

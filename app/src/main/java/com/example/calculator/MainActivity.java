@@ -43,10 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 answer = "";
                 break;
             case "±":
-                if (answer != null && answer != "") {
-                    oppositeLastNum();
-                }
-                //newExp = false;
+                oppositeLastNum();
                 break;
             case "%":
                 if (formula != null && formula != "") {
@@ -142,9 +139,15 @@ public class MainActivity extends AppCompatActivity {
         try {
             double res = (double) engine.eval(formula);
             answer = res + "";
+            if (answer.contains("Inf")) {
+                output = "Error";
+                answer = "";
+                input = "";
+                formula = "";
+                return;
+            }
             res = Math.round(res*1000000)/1000000.0;
             output = res+"";
-
             if (Math.ceil(res) == Math.floor(res)) {
                 int temp = (int) res;
                 answer = temp + "";
@@ -158,6 +161,55 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void oppositeLastNum() {
+        boolean found = false;
+        for (int i = formula.length()-1; i >= 0; i--) {
+            switch (formula.charAt(i)) {
+                case '+':
+                    found = true;
+                    formula = formula.substring(0, i) + "-" + formula.substring(i+1);
+                    break;
+                case '-':
+                    found = true;
+                    formula = formula.substring(0, i) + "+" + formula.substring(i+1);
+                    break;
+                case '*' :
+                case '/':
+                    found = true;
+                    formula = formula.substring(0, i + 1) + "-" + formula.substring(i+1);
+                    break;
+                default:
+                    break;
+            }
+            if (found) 
+                break;
+        }
 
+        if (!found)
+            formula = "-" + formula;
+
+        found = false;
+        for (int i = input.length()-1; i >= 0; i--) {
+            switch (input.charAt(i)) {
+                case '+':
+                    found = true;
+                    input = input.substring(0, i) + "-" + input.substring(i+1);
+                    break;
+                case '-':
+                    found = true;
+                    input = input.substring(0, i) + "+" + input.substring(i+1);
+                    break;
+                case '×' :
+                case '÷':
+                    found = true;
+                    input = input.substring(0, i + 1) + "-" + input.substring(i+1);
+                    break;
+                default:
+                    break;
+            }
+            if (found)
+                break;
+        }
+        if (!found)
+            input = "- " + input;
     }
 }
