@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         tvAnswer = (TextView) findViewById(R.id.tv_answer);
     }
 
-    public void ButtonClick(View view) {
+    public void buttonClick(View view) {
         Button button = (Button) view;
         String data = button.getText().toString();
 
