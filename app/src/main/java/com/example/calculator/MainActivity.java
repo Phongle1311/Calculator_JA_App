@@ -15,9 +15,12 @@ import javax.script.ScriptException;
 
 public class MainActivity extends AppCompatActivity {
     private TextView tvExpression, tvAnswer;
-    private String input, output, formula, answer;
+    private String
+            input = "",
+            output = "",
+            formula = "",
+            answer = "";
     private char lastChar;
-    private boolean newExp = true;
     private ScriptEngine engine = new ScriptEngineManager().getEngineByName("rhino");
 
     @Override
@@ -29,95 +32,79 @@ public class MainActivity extends AppCompatActivity {
         tvAnswer = (TextView) findViewById(R.id.tv_answer);
     }
 
+
     public void buttonClick(View view) {
         Button button = (Button) view;
         String data = button.getText().toString();
 
-        if (formula != null)
-            if (formula.length()>0)
-                lastChar = formula.charAt(formula.length() - 1);
         switch (data) {
             case "C":
                 input = "";
                 formula = "";
                 output = "";
                 answer = "";
+                lastChar = '\0';
                 break;
             case "±":
-                oppositeLastNum();
+                if (lastChar != '\0') {
+                    if (lastChar == '=')
+                        updateFormula();
+                    oppositeLastNum();
+                    lastChar = '±';
+                }
                 break;
             case "%":
-                if (formula != null && formula != "") {
-                    if (output != "" && output != "Error" && output != null) {
-                        input = output;
-                        formula = answer;
-                    }
+                if (lastChar!='\0' && lastChar != '+' && lastChar != '-' && lastChar != '*' && lastChar != '/') {
+                    if (lastChar == '=')
+                        updateFormula();
                     input += "% ";
                     formula += "/100";
+                    lastChar = '%';
                 }
-                newExp = false;
                 break;
             case "÷":
-                if (formula != null && formula != "" ) {
-                    if (lastChar != '+' && lastChar != '-' && lastChar != '*' && lastChar != '/')
-                    {
-                        if (output != "" && output != "Error" && output != null) {
-                            input = output;
-                            formula = answer;
-                        }
-                        input+=" ÷ ";
-                        formula += "/";
-                    }
+                if (lastChar!='\0' && lastChar != '+' && lastChar != '-' && lastChar != '*' && lastChar != '/') {
+                    if (lastChar == '=')
+                        updateFormula();
+                    input+=" ÷ ";
+                    formula += "/";
                 }
-                newExp = false;
                 break;
             case "×":
-                if (formula != null && formula != "") {
-                    if (lastChar != '+' && lastChar != '-' && lastChar != '*' && lastChar != '/') {
-                        if (output != "" && output != "Error" && output != null) {
-                            input = output;
-                            formula = answer;
-                        }
-                        formula += "*";
-                        input += " × ";
-                    }
+                if (lastChar!='\0' && lastChar != '+' && lastChar != '-' && lastChar != '*' && lastChar != '/') {
+                    if (lastChar == '=')
+                        updateFormula();
+                    formula += "*";
+                    input += " × ";
+                    lastChar = '*';
                 }
-                newExp = false;
                 break;
             case "-":
                 if (lastChar != '-')
                 {
-                    if (output != "" && output != "Error" && output != null) {
-                        input = output;
-                        formula = answer;
-                    }
+                    if (lastChar == '=')
+                        updateFormula();
                     input+=" - ";
                     formula += "-";
+                    lastChar = '-';
                 }
-                newExp = false;
                 break;
             case "+":
-                if (lastChar != '*' && lastChar != '/' && lastChar != '+')
+                if (lastChar!='\0' && lastChar != '*' && lastChar != '/' && lastChar != '+')
                 {
-                    if (output != "" && output != "Error" && output != null) {
-                        input = output;
-                        formula = answer;
-                    }
+                    if (lastChar == '=')
+                        updateFormula();
                     input+=" + ";
                     formula += "+";
+                    lastChar = '+';
                 }
-                newExp = false;
                 break;
             case "=":
                 solve();
-                newExp = true;
+                lastChar = '=';
                 break;
             default:
-                if (formula == null) {
-                    formula = "";
-                    input = "";
-                }
-                if (newExp) {
+                if (lastChar == '=') {
                     formula = "";
                     input = "";
                     output = "";
@@ -125,13 +112,18 @@ public class MainActivity extends AppCompatActivity {
                 }
                 input +=data;
                 formula += data;
-                newExp = false;
+                lastChar = data.charAt(0);
                 break;
         }
 
         tvExpression.setText(input);
         tvAnswer.setText(output);
         //button.setBackgroundColor(Color.GRAY);
+    }
+
+    public void updateFormula() {
+        input = output;
+        formula = answer;
     }
 
     public void solve() {
@@ -145,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
                 formula = "";
                 return;
             }
+
             res = Math.round(res*1000000)/1000000.0;
             output = res+"";
             if (Math.ceil(res) == Math.floor(res)) {
@@ -159,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
             formula = "";
         }
     }
+
     public void oppositeLastNum() {
         boolean found = false;
         for (int i = formula.length()-1; i >= 0; i--) {
@@ -179,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
                 default:
                     break;
             }
-            if (found) 
+            if (found)
                 break;
         }
 
