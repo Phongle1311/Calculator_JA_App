@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -23,17 +23,44 @@ public class MainActivity extends AppCompatActivity {
             answer = "";
     private char lastChar;
     private final ScriptEngine engine = new ScriptEngineManager().getEngineByName("rhino");
-    private MyViewModel model;
+
+    static final String STATE_INPUT = "input";
+    static final String STATE_OUTPUT = "output";
+    static final String STATE_FORMULA = "formula";
+    static final String STATE_ANSWER = "answer";
+    static final String STATE_LAST_CHAR = "lastChar";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         tvExpression = (TextView) findViewById(R.id.tv_expression);
         tvAnswer = (TextView) findViewById(R.id.tv_answer);
 
-        model = new ViewModelProvider(this).get(MyViewModel.class);
+        tvExpression.setText(input);
+        tvAnswer.setText(output);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putString(STATE_INPUT, input);
+        savedInstanceState.putString(STATE_OUTPUT, output);
+        savedInstanceState.putString(STATE_FORMULA, formula);
+        savedInstanceState.putString(STATE_ANSWER, answer);
+        savedInstanceState.putChar(STATE_LAST_CHAR, lastChar);
+
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        input = savedInstanceState.getString(STATE_INPUT);
+        output = savedInstanceState.getString(STATE_OUTPUT);
+        formula = savedInstanceState.getString(STATE_FORMULA);
+        answer = savedInstanceState.getString(STATE_ANSWER);
+        lastChar = savedInstanceState.getChar(STATE_LAST_CHAR);
     }
 
     public void buttonClick(View view) {
