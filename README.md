@@ -1,2 +1,3 @@
 # RTLab_Ass2_Calculator
-![poitrait](/Screenshot_poitrait.png)
+![portrait](/screenshot_portrait_layout.png)
+![landscape](/screenshot_landscape_layout.png)
