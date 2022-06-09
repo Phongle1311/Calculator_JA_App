@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="@color/white_bg">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:background="@color/dark_purple"
+        android:paddingTop = "20dp"
+        android:paddingBottom="25dp"
+        android:paddingStart = "10dp"
+        android:paddingEnd = "25dp"
+        android:layout_weight = "75"
+        >
+
+        <TextView
+            style = "@style/textView"
+            android:id="@+id/tv_expression"
+            android:text=""
+            android:textSize="30sp"
+            android:textColor="@color/matte_white"/>
+
+        <TextView
+            style = "@style/textView"
+            android:id="@+id/tv_answer"
+            android:text=""
+            android:textSize="50sp"
+            android:textColor="@color/text_white"/>
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="127">
+
+        <TableRow
+            style = "@style/button_line"
+            android:layout_marginTop = "1dp"
+            >
+
+            <androidx.appcompat.widget.AppCompatButton
+                style = "@style/white_btn"
+                android:text="@string/num_7"
+                tools:ignore="UsingOnClickInXml" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style = "@style/white_btn"
+                android:text="@string/num_8"
+                tools:ignore="UsingOnClickInXml" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style = "@style/white_btn"
+                android:layout_weight=".25"
+                android:text="@string/num_9"
+                tools:ignore="UsingOnClickInXml" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style = "@style/white_btn"
+                android:text="@string/op_clear"
+                tools:ignore="UsingOnClickInXml" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style = "@style/orange_btn"
+                android:text="@string/op_multiply"
+                tools:ignore="UsingOnClickInXml" />
+        </TableRow>
+
+        <TableRow
+            style = "@style/button_line"
+            android:layout_marginTop = "1dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                style = "@style/white_btn"
+                android:text="@string/num_4"
+                tools:ignore="UsingOnClickInXml" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style = "@style/white_btn"
+                android:text="@string/num_5"
+                tools:ignore="UsingOnClickInXml" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style = "@style/white_btn"
+                android:text="@string/num_6"
+                tools:ignore="UsingOnClickInXml" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style = "@style/white_btn"
+                android:text="@string/op_opposite"
+                tools:ignore="UsingOnClickInXml" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style="@style/orange_btn"
+                android:text="@string/op_subtract"
+                tools:ignore="UsingOnClickInXml" />
+        </TableRow>
+
+        <TableRow
+            style = "@style/button_line"
+            android:layout_marginTop = "1dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                style = "@style/white_btn"
+                android:text="@string/num_1"
+                tools:ignore="UsingOnClickInXml" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style = "@style/white_btn"
+                android:text="@string/num_2"
+                tools:ignore="UsingOnClickInXml" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style = "@style/white_btn"
+                android:text="@string/num_3"
+                tools:ignore="UsingOnClickInXml" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style = "@style/white_btn"
+                android:text="@string/op_percent"
+                tools:ignore="UsingOnClickInXml" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style="@style/orange_btn"
+                android:text="@string/op_add"
+                tools:ignore="UsingOnClickInXml" />
+        </TableRow>
+
+        <TableRow
+            style = "@style/button_line"
+            android:layout_marginTop = "1dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                style="@style/large_white_btn"
+                android:paddingStart="82dp"
+                android:text="@string/num_0"
+                android:textAlignment="textStart"
+                tools:ignore="UsingOnClickInXml" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style="@style/white_btn"
+                android:text="@string/op_dot"
+                tools:ignore="UsingOnClickInXml" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style="@style/white_btn"
+                android:text="@string/op_equal"
+                tools:ignore="UsingOnClickInXml" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style = "@style/orange_btn"
+                android:text="@string/op_divide"
+                tools:ignore="UsingOnClickInXml" />
+        </TableRow>
+    </TableLayout>
+</LinearLayout>

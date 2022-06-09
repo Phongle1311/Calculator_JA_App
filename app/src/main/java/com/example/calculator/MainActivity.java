@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -21,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
             formula = "",
             answer = "";
     private char lastChar;
-    private ScriptEngine engine = new ScriptEngineManager().getEngineByName("rhino");
+    private final ScriptEngine engine = new ScriptEngineManager().getEngineByName("rhino");
+    private MyViewModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
         tvExpression = (TextView) findViewById(R.id.tv_expression);
         tvAnswer = (TextView) findViewById(R.id.tv_answer);
-    }
 
+        model = new ViewModelProvider(this).get(MyViewModel.class);
+    }
 
     public void buttonClick(View view) {
         Button button = (Button) view;
@@ -49,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
                 if (lastChar != '\0') {
                     if (lastChar == '=')
                         updateFormula();
-                    oppositeLastNum();
+                    formula = oppositeLastNum(formula, "-");
+                    input = oppositeLastNum(input, "- ");
                     lastChar = '±';
                 }
                 break;
@@ -68,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                         updateFormula();
                     input+=" ÷ ";
                     formula += "/";
+                    lastChar = '/';
                 }
                 break;
             case "×":
@@ -121,12 +126,12 @@ public class MainActivity extends AppCompatActivity {
         //button.setBackgroundColor(Color.GRAY);
     }
 
-    public void updateFormula() {
+    private void updateFormula() {
         input = output;
         formula = answer;
     }
 
-    public void solve() {
+    private void solve() {
         try {
             double res = (double) engine.eval(formula);
             answer = res + "";
@@ -153,56 +158,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void oppositeLastNum() {
-        boolean found = false;
-        for (int i = formula.length()-1; i >= 0; i--) {
-            switch (formula.charAt(i)) {
+    private String oppositeLastNum(String s, String prefix) {
+        for (int i = s.length()-1; i >= 0; i--)
+            switch (s.charAt(i)) {
                 case '+':
-                    found = true;
-                    formula = formula.substring(0, i) + "-" + formula.substring(i+1);
-                    break;
+                    s = s.substring(0, i) + "-" + s.substring(i+1);
+                    return s;
                 case '-':
-                    found = true;
-                    formula = formula.substring(0, i) + "+" + formula.substring(i+1);
-                    break;
+                    s = s.substring(0, i) + "+" + s.substring(i+1);
+                    return s;
                 case '*' :
                 case '/':
-                    found = true;
-                    formula = formula.substring(0, i + 1) + "-" + formula.substring(i+1);
-                    break;
-                default:
-                    break;
+                    s = s.substring(0, i + 1) + "-" + s.substring(i+1);
+                    return s;
             }
-            if (found)
-                break;
-        }
-
-        if (!found)
-            formula = "-" + formula;
-
-        found = false;
-        for (int i = input.length()-1; i >= 0; i--) {
-            switch (input.charAt(i)) {
-                case '+':
-                    found = true;
-                    input = input.substring(0, i) + "-" + input.substring(i+1);
-                    break;
-                case '-':
-                    found = true;
-                    input = input.substring(0, i) + "+" + input.substring(i+1);
-                    break;
-                case '×' :
-                case '÷':
-                    found = true;
-                    input = input.substring(0, i + 1) + "-" + input.substring(i+1);
-                    break;
-                default:
-                    break;
-            }
-            if (found)
-                break;
-        }
-        if (!found)
-            input = "- " + input;
+        s = prefix + s;
+        return s;
     }
 }
