@@ -11,8 +11,8 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         android:background="@color/dark_purple"
-        android:paddingTop = "20dp"
-        android:paddingBottom="25dp"
+        android:paddingTop = "5dp"
+        android:paddingBottom="10dp"
         android:paddingStart = "10dp"
         android:paddingEnd = "25dp"
         android:layout_weight = "75"
@@ -22,14 +22,14 @@
             style = "@style/textView"
             android:id="@+id/tv_expression"
             android:text=""
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textColor="@color/matte_white"/>
 
         <TextView
             style = "@style/textView"
             android:id="@+id/tv_answer"
             android:text=""
-            android:textSize="50sp"
+            android:textSize="45sp"
             android:textColor="@color/text_white"/>
     </LinearLayout>
 
@@ -136,7 +136,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 style="@style/large_white_btn"
-                android:paddingStart="82dp"
+                android:paddingStart="75dp"
                 android:text="@string/num_0"
                 android:textAlignment="textStart"
                 tools:ignore="UsingOnClickInXml" />

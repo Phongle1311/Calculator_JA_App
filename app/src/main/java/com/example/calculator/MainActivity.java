@@ -37,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
         tvExpression = (TextView) findViewById(R.id.tv_expression);
         tvAnswer = (TextView) findViewById(R.id.tv_answer);
 
+        if (savedInstanceState != null) {
+            input = savedInstanceState.getString(STATE_INPUT);
+            output = savedInstanceState.getString(STATE_OUTPUT);
+            formula = savedInstanceState.getString(STATE_FORMULA);
+            answer = savedInstanceState.getString(STATE_ANSWER);
+            lastChar = savedInstanceState.getChar(STATE_LAST_CHAR);
+        }
+
         tvExpression.setText(input);
         tvAnswer.setText(output);
     }
